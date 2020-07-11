@@ -40,21 +40,21 @@ System.out.println(proxy.removefromCart(p2));
 System.out.println(".............................");
 proxy.showCart(); // showing cart iteams
 System.out.println(".............................");
-System.out.println("Bill Amount::" + proxy.billing(5, proxy.getBillamt()));
+System.out.println("Bill Amount::" + proxy.billing(proxy.generateCoupon(), proxy.getCartValue()));
 System.out.println(".............................");
                                 System.out.println(proxy.addtoCart(p3)); // add one more iteams
 System.out.println(".............................");
-System.out.println("Bill Amount::" + proxy.billing(5, proxy.getBillamt()));
+System.out.println("Bill Amount::" + proxy.billing(proxy.generateCoupon(), proxy.getCartValue()));
 System.out.println(".............................");
-System.out.println("Bill Amount::" + proxy.billing(5, proxy.getBillamt()));
+System.out.println("Bill Amount::" + proxy.billing(proxy.generateCoupon(), proxy.getCartValue()));
 System.out.println(".............................");
 System.out.println(proxy.removefromCart(p2));
 System.out.println(".............................");
-System.out.println("Bill Amount::" + proxy.billing(5, proxy.getBillamt()));
+System.out.println("Bill Amount::" + proxy.billing(proxy.generateCoupon(), proxy.getCartValue()));
 System.out.println(".............................");
 System.out.println(proxy.addtoCart(p4));
 System.out.println(".............................");
-System.out.println("Bill Amount::" + proxy.billing(5, proxy.getBillamt()));
+System.out.println("Bill Amount::" + proxy.billing(5, proxy.getCartValue()));
  
 } catch (Exception e) {
 e.printStackTrace();

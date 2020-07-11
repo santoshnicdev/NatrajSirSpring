@@ -13,7 +13,7 @@ public class ProductDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private int id;
-	private String iteams;
+	private String iteamname;
 	private Double price;
 	private Integer qty;
 	
@@ -21,7 +21,7 @@ public class ProductDTO implements Serializable {
 	public ProductDTO(int id, String iteams, Double price, Integer integer) {
 		super();
 		this.id = id;
-		this.iteams = iteams;
+		this.iteamname = iteams;
 		this.price = price;
 		this.qty = integer;
 	}
@@ -38,11 +38,11 @@ public class ProductDTO implements Serializable {
 		this.qty = qty;
 	}
 	public String getIteams() {
-		return iteams;
+		return iteamname;
 	}
 	@Override
 	public String toString() {
-		return "EcartDto [id=" + id + ", iteams=" + iteams + ", price=" + price + ", qty=" + qty + "]";
+		return "EcartDto [id=" + id + ", iteams=" + iteamname + ", price=" + price + ", qty=" + qty + "]";
 	}
 	
 	

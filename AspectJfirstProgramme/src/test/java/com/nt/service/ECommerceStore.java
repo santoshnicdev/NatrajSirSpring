@@ -7,32 +7,41 @@ import com.nt.dto.ProductDTO;
  
 public class ECommerceStore {
 private int counter=0;
-private float billamt=0;
+private float cartValue=0;
+private int coupon=0;
  
-public float getBillamt() {
-return billamt;
+List<ProductDTO> ecart=new ArrayList<>();
+
+public float getCartValue() {
+	return cartValue;
 }
 public int getCounter() {
 return counter;
 }
- 
-List<ProductDTO> ecart=new ArrayList<>();
+public int generateCoupon()
+{
+	if(this.cartValue >= 200000)
+		coupon=10;
+	else if(this.cartValue>=100000)
+		coupon=5;
+	return coupon;
+}
  
 public String addtoCart(ProductDTO dto)
 {
 ecart.add(dto);
 counter++;
-billamt=(float) (billamt+(dto.getPrice()*dto.getQty()));
+cartValue=(float) (cartValue+(dto.getPrice()*dto.getQty()));
  
-return "added sucessfully ::now your have "+counter+" iteams in your cart worth"+billamt+" Rs";
+return "added sucessfully ::now your have "+counter+" iteams in your cart worth"+cartValue+" Rs";
 }
 public String removefromCart(ProductDTO dto)
 {
 ecart.remove(dto);
 counter--;
-billamt=(float) (billamt-(dto.getPrice()*dto.getQty()));;
+cartValue=(float) (cartValue-(dto.getPrice()*dto.getQty()));;
  
-return "slected iteams removed sucessfully from your cart ::now your have::"+counter  +" iteams in your cart worth::"+billamt+" Rs";
+return "slected iteams removed sucessfully from your cart ::now your have::"+counter  +" iteams in your cart worth::"+cartValue+" Rs";
 }
 public void showCart()
 {
@@ -48,7 +57,7 @@ float discount;
  discount=billamt*(coupon/100.0f);
   finalamt=billamt-discount;
  
-msg="Dear Customer your coupon of ::"+coupon+" percent has been applied sucessfully on your billamout of::"+billamt+" you got toatal discount of "+discount+" and your final amount is: "+finalamt;
+msg="Dear Customer your coupon of ::"+coupon+" percent has been applied sucessfully on your billamount of::"+billamt+" you got total discount of "+discount+" and your final amount is: "+finalamt;
 return msg;
  
  
