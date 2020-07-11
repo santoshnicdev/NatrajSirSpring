@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+   <!-- configure  target class -->
+   <bean id="store" class="com.nt.service.ECommerceStore"/>
+   
+   <!-- cfg Advice classes -->
+   <bean id="pmAspect"  class="com.nt.aspect.PerformenceMonitoringAspect"/>
+   <bean id="cacheAspect" class="com.nt.aspect.CachingAspect"/>
+   
+   <!-- enable AspectjAOP -->
+   <aop:config>
+     <!-- pointcut expression -->
+     <aop:pointcut expression="execution(* com.nt.service.ECommerceStore.*(..))" id="ptc"/>
+   
+     <!-- make spring bean as aspectj aop advice -->
+     <aop:aspect ref="pmAspect">
+         <aop:around method="monitor" pointcut-ref="ptc" />
+     </aop:aspect>
+     <!-- make spring bean as aspectjaop advice -->
+     <aop:aspect ref="cacheAspect">
+       <aop:around method="caching" pointcut="execution(String com.nt.service.ECommerceStore.*(..))"/>
+     </aop:aspect>
+     
+   </aop:config>
+   
+   
+
+</beans>
