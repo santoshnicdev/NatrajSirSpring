@@ -11,6 +11,9 @@
    <!-- cfg Advice classes -->
    <bean id="pmAspect"  class="com.nt.aspect.PerformenceMonitoringAspect"/>
    <bean id="cacheAspect" class="com.nt.aspect.CachingAspect"/>
+   <bean id="logAspect" class="com.nt.aspect.AroundLoggingAspect"/>
+   
+   
    
    <!-- enable AspectjAOP -->
    <aop:config>
@@ -24,6 +27,9 @@
      <!-- make spring bean as aspectjaop advice -->
      <aop:aspect ref="cacheAspect">
        <aop:around method="caching" pointcut="execution(String com.nt.service.ECommerceStore.*(..))"/>
+     </aop:aspect>
+     <aop:aspect ref="logAspect">
+         <aop:around method="logging" pointcut-ref="ptc" />
      </aop:aspect>
      
    </aop:config>

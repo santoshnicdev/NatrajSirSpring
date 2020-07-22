@@ -18,14 +18,10 @@ public float getCartValue() {
 public int getCounter() {
 return counter;
 }
-public int generateCoupon()
-{
-	if(this.cartValue >= 200000)
-		coupon=10;
-	else if(this.cartValue>=100000)
-		coupon=5;
-	return coupon;
-}
+/*
+ * public int generateCoupon() { if(this.cartValue >= 200000) coupon=10; else
+ * if(this.cartValue>=100000) coupon=5; return coupon; }
+ */
  
 public String addtoCart(ProductDTO dto)
 {

@@ -9,6 +9,8 @@ public class PerformenceMonitoringAspect {
 	public   Object monitor(ProceedingJoinPoint pjp)throws Throwable{
 		long start=0,end=0;
 		Object retVal=null;
+		Object[] args=pjp.getArgs();
+		//if(args[0])
 		
 		start=System.currentTimeMillis();
 		retVal=pjp.proceed();
